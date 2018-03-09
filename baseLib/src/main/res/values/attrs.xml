@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="gridPasswordView">
+
+        <attr name="text_Color" format="color|reference"/>
+        <attr name="text_Size" format="dimension"/>
+
+        <attr name="borderColor" format="color"/>
+        <attr name="borderActiveColor" format="color"/>
+        <attr name="gridColor" format="color"/>
+        <attr name="lineWidth" format="dimension"/>
+
+        <attr name="passwordLength" format="integer"/>
+        <attr name="toUpper" format="boolean"/>
+        <attr name="passwordTransformation" format="string"/>
+
+        <attr name="passwordType" format="enum">
+            <enum name="numberPassword" value="0"/>
+            <enum name="textPassword" value="1"/>
+            <enum name="textVisiblePassword" value="2"/>
+            <enum name="textWebPassword" value="3"/>
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="SwitchButton">
+        <attr name="onDrawable" format="reference"/>
+        <attr name="offDrawable" format="reference"/>
+        <attr name="thumbDrawable" format="reference"/>
+        <attr name="thumb_margin" format="dimension|reference"/>
+        <attr name="thumb_marginTop" format="dimension|reference"/>
+        <attr name="thumb_marginBottom" format="dimension|reference"/>
+        <attr name="thumb_marginLeft" format="dimension|reference"/>
+        <attr name="thumb_marginRight" format="dimension|reference"/>
+        <attr name="thumb_width" format="dimension|reference"/>
+        <attr name="thumb_height" format="dimension|reference"/>
+        <attr name="onColor" format="color|reference"/>
+        <attr name="offColor" format="color|reference"/>
+        <attr name="thumbColor" format="color|reference"/>
+        <attr name="thumbPressedColor" format="color|reference"/>
+        <attr name="animationVelocity" format="integer"/>
+        <attr name="swRadius" format="integer"/>
+        <attr name="measureFactor" format="float"/>
+        <attr name="insetLeft" format="dimension|reference"/>
+        <attr name="insetRight" format="dimension|reference"/>
+        <attr name="insetTop" format="dimension|reference"/>
+        <attr name="insetBottom" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="GestureLockViewGroup">
+        <attr name="color_no_finger" format="color"/>
+        <attr name="color_finger_on" format="color"/>
+        <attr name="color_finger_up_correct" format="color"/>
+        <attr name="color_finger_up_error" format="color"/>
+        <attr name="count" format="integer"/>
+        <attr name="preference_id" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="SlideDetailsLayout">
+        <attr name="percent" format="float"/>
+        <attr name="duration" format="integer"/>
+        <attr name="default_panel" format="enum">
+            <enum name="front" value="0"/>
+            <enum name="behind" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="WheelView">
+        <attr name="cyclic" format="boolean"/>
+        <attr name="entries" format="reference"/>
+        <attr name="visibleItems" format="integer"/>
+        <attr name="lineSpace" format="dimension"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="selectedColor" format="color"/>
+        <attr name="unselectedColor" format="color"/>
+        <attr name="divider" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="Wheel3DView">
+        <attr name="toward" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="left" value="-1"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

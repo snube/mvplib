@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.snubee.mvp.samples">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.snubee.mvp.samples.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.snubee.mvp.samples.demo1.SimpleActivity"/>
+        <activity android:name="com.snubee.mvp.samples.demo2.DemoActivity"/>
+        <activity android:name="com.snubee.mvp.samples.demo3.ShellActivity"/>
+        <activity android:name="com.snubee.mvp.samples.demo4.ShellActivity"/>
+        <activity
+            android:name="com.snubee.mvp.samples.demo5.Demo5Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.snubee.mvp.samples.demo6.Demo6Activity"/>
+    </application>
+
+</manifest>
