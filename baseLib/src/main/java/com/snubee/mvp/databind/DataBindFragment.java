@@ -43,6 +43,7 @@ public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter.getViewDelegate().initWidget();
+        mPresenter.isMoreDataBinder();
         mPresenter.bindEventStart();
         bindEvenListener();
     }
