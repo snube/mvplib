@@ -18,4 +18,6 @@ public interface IDelegate {
 
     void initWidget();
 
+    void unbinde();
+
 }

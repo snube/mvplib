@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,14 @@ public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         this.mInflater = inflater;
         mPresenter.onCreate(inflater, savedInstanceState);
+        Log.i("snubee","onCreateView");
         return mPresenter.getViewDelegate().getRootView();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i("snubee","onViewCreated");
         mPresenter.getViewDelegate().initWidget();
         mPresenter.isMoreDataBinder();
         mPresenter.bindEventStart();

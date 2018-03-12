@@ -24,4 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':baseLib')
     compile 'com.lzy.net:okgo:3.0.4'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

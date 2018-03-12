@@ -60,6 +60,9 @@ public abstract class PresenterImp<T extends IDelegate> implements IPresenter<T>
      * 资源回收，防止内存泄漏，在view销毁时需要调用该方法
      */
     public void onDestroy() {
+        if (viewDelegate != null) {
+            viewDelegate.unbinde();
+        }
         viewDelegate = null;
         for (DataBinder binder : mDataBinders.values())
             binder = null;

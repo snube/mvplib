@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * View delegate base class
  * 视图层代理的基类
@@ -19,12 +22,15 @@ public abstract class DelegateIpm implements IDelegate {
 
     protected View rootView;
 
+    protected Unbinder mUnbinder;
+
     public abstract int getRootLayoutId();
 
     @Override
     public void create(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         int rootLayoutId = getRootLayoutId();
         rootView = inflater.inflate(rootLayoutId, container, false);
+        mUnbinder = ButterKnife.bind(this, rootView);
     }
 
     @Override
@@ -38,6 +44,14 @@ public abstract class DelegateIpm implements IDelegate {
 
     @Override
     public void initWidget() {
+    }
+
+    @Override
+    public void unbinde() {
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+            mUnbinder = null;
+        }
     }
 
     public <T extends View> T bindView(int id) {

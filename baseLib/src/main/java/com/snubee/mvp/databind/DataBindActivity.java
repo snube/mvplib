@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.snubee.mvp.presenter.PresenterImp;
 import com.snubee.mvp.view.IDelegate;
 
+import butterknife.ButterKnife;
+
 
 /**
  * 集成数据-视图绑定的Activity基类(Presenter层)
@@ -25,8 +27,8 @@ public abstract class DataBindActivity<T extends IDelegate> extends AppCompatAct
 
         mPresenter.onCreate(getLayoutInflater(), savedInstanceState);
         setContentView(mPresenter.getViewDelegate().getRootView());
-        mPresenter.getViewDelegate().initWidget();
 
+        mPresenter.getViewDelegate().initWidget();
         mPresenter.addDataBinder(getDataBinder());
         mPresenter.isMoreDataBinder();
         mPresenter.bindEventStart();

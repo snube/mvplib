@@ -2,10 +2,13 @@ package com.snubee.mvp.samples;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 
 import com.snubee.mvp.presenter.PresenterImp;
 import com.snubee.mvp.samples.demo2.DemoActivity;
 import com.snubee.mvp.samples.demo3.ShellActivity;
+
+import butterknife.BindView;
 
 /**
  * Created by snubee on 2018/3/8.
@@ -34,7 +37,8 @@ public class MainPresenter extends PresenterImp<MainDelegate> implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button2:
-                getViewDelegate().getActivity().startActivity(new Intent(getViewDelegate().getActivity(), DemoActivity.class));
+                getViewDelegate().setText();
+//                getViewDelegate().getActivity().startActivity(new Intent(getViewDelegate().getActivity(), DemoActivity.class));
                 break;
             case R.id.button3:
                 getViewDelegate().getActivity().startActivity(new Intent(getViewDelegate().getActivity(), ShellActivity.class));
