@@ -2,13 +2,10 @@ package com.snubee.mvp.samples;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 
 import com.snubee.mvp.presenter.PresenterImp;
-import com.snubee.mvp.samples.demo2.DemoActivity;
+import com.snubee.mvp.samples.demo3.MainDelegate;
 import com.snubee.mvp.samples.demo3.ShellActivity;
-
-import butterknife.BindView;
 
 /**
  * Created by snubee on 2018/3/8.

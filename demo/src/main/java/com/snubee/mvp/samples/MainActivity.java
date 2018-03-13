@@ -1,16 +1,9 @@
 package com.snubee.mvp.samples;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-
 import com.snubee.mvp.databind.DataBindActivity;
 import com.snubee.mvp.databind.DataBinder;
 import com.snubee.mvp.presenter.PresenterImp;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.snubee.mvp.samples.demo3.MainDelegate;
 
 public class MainActivity extends DataBindActivity<MainDelegate>{
 
