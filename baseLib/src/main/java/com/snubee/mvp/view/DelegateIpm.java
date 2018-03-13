@@ -2,6 +2,7 @@
 package com.snubee.mvp.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -24,11 +25,14 @@ public abstract class DelegateIpm implements IDelegate {
 
     protected Unbinder mUnbinder;
 
+    protected Context mContext;
+
     public abstract int getRootLayoutId();
 
     @Override
     public void create(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         int rootLayoutId = getRootLayoutId();
+        mContext = inflater.getContext();
         rootView = inflater.inflate(rootLayoutId, container, false);
         mUnbinder = ButterKnife.bind(this, rootView);
     }
@@ -46,12 +50,23 @@ public abstract class DelegateIpm implements IDelegate {
     public void initWidget() {
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
     @Override
     public void unbinde() {
         if (mUnbinder != null) {
             mUnbinder.unbind();
             mUnbinder = null;
         }
+        for (int i = 0; i < mViews.size(); i++) {
+            View v = mViews.get(i);
+            if (v != null) {
+                v = null;
+            }
+        }
+        mViews.clear();
     }
 
     public <T extends View> T bindView(int id) {
