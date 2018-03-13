@@ -1,6 +1,7 @@
 package com.snubee.mvp.presenter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 public abstract class PresenterImp<T extends IDelegate> implements IPresenter<T> {
     protected T viewDelegate;
+    protected Context mContext;
 
     public PresenterImp() {
         try {
@@ -36,6 +38,7 @@ public abstract class PresenterImp<T extends IDelegate> implements IPresenter<T>
 
     public void onCreate(LayoutInflater inflater, Bundle savedInstanceState) {
         viewDelegate.create(inflater, null, savedInstanceState);
+        mContext = inflater.getContext();
     }
 
     public void onRestoreInstanceState(LayoutInflater inflater, Bundle savedInstanceState) {
@@ -54,6 +57,10 @@ public abstract class PresenterImp<T extends IDelegate> implements IPresenter<T>
     @Override
     public T getViewDelegate() {
         return viewDelegate;
+    }
+
+    public Context getContext() {
+        return mContext;
     }
 
     /**
@@ -102,7 +109,7 @@ public abstract class PresenterImp<T extends IDelegate> implements IPresenter<T>
     public <D extends IModel> void notifyModelChanged(D data) {
         if (mDataBinders != null && mDataBinders.size() > 0) {
             DataBinder binder = mDataBinders.get(data.getClass().getName());
-            if (binder != null)
+            if (binder != null && !isNotActive())
                 binder.viewBindModel(viewDelegate, data);
         }
     }
