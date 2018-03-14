@@ -46,6 +46,7 @@ public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.i("snubee","onViewCreated");
         mPresenter.getViewDelegate().initWidget();
+        mPresenter.addDataBinder(getDataBinder());
         mPresenter.isMoreDataBinder();
         mPresenter.bindEventStart();
         bindEvenListener();
