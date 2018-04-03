@@ -5,7 +5,7 @@ import com.snubee.mvp.databind.DataBinder;
 import com.snubee.mvp.presenter.PresenterImp;
 import com.snubee.mvp.samples.demo3.MainDelegate;
 
-public class MainActivity extends DataBindActivity<MainDelegate>{
+public class MainActivity extends DataBindActivity<MainPresenter,MainDelegate>{
 
 
     @Override
@@ -13,10 +13,10 @@ public class MainActivity extends DataBindActivity<MainDelegate>{
         return null;
     }
 
-    @Override
-    public PresenterImp getPresenter() {
-        return new MainPresenter();
-    }
+//    @Override
+//    public PresenterImp getPresenter() {
+//        return new MainPresenter();
+//    }
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {

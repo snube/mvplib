@@ -12,22 +12,26 @@ import android.view.ViewGroup;
 import com.snubee.mvp.presenter.PresenterImp;
 import com.snubee.mvp.view.IDelegate;
 
+import java.lang.reflect.ParameterizedType;
+
 
 /**
  * 集成数据-视图绑定的Fragment基类(Presenter层)
  *
  * @param <T> View层代理类
+ * @param <P> Presenter
  * @author snubee
  */
-public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
+public abstract class DataBindFragment<P extends PresenterImp<T>, T extends IDelegate> extends Fragment {
 
-    protected PresenterImp<T> mPresenter;
+    protected P mPresenter;
     protected LayoutInflater mInflater;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = getPresenter();
+//        mPresenter = getPresenter();
+        initPresenter();
     }
 
     @Nullable
@@ -37,14 +41,14 @@ public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         this.mInflater = inflater;
         mPresenter.onCreate(inflater, savedInstanceState);
-        Log.i("snubee","onCreateView");
+        Log.i("snubee", "onCreateView");
         return mPresenter.getViewDelegate().getRootView();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.i("snubee","onViewCreated");
+        Log.i("snubee", "onViewCreated");
         mPresenter.getViewDelegate().initWidget();
         mPresenter.addDataBinder(getDataBinder());
         mPresenter.isMoreDataBinder();
@@ -76,12 +80,30 @@ public abstract class DataBindFragment<T extends IDelegate> extends Fragment {
      */
     public abstract DataBinder getDataBinder();
 
+//    /**
+//     * 返回一个业务逻辑的presenter
+//     *
+//     * @return
+//     */
+//    @NonNull
+//    public abstract PresenterImp getPresenter();
+
     /**
-     * 返回一个业务逻辑的presenter
-     *
-     * @return
+     * 初始化Presenter
      */
-    @NonNull
-    public abstract PresenterImp getPresenter();
+    private void initPresenter() {
+        if (this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
+                ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments().length > 0) {
+            Class mPresenterClass = (Class) ((ParameterizedType) (this.getClass()
+                    .getGenericSuperclass())).getActualTypeArguments()[0];
+            try {
+                mPresenter = (P) mPresenterClass.newInstance();
+            } catch (java.lang.InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

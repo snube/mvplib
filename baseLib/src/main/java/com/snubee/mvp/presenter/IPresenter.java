@@ -9,7 +9,8 @@ import com.snubee.mvp.view.IDelegate;
  *
  * @author snubee
  */
-public interface IPresenter<T extends IDelegate> {
+public interface
+IPresenter<T extends IDelegate> {
     boolean isNotActive();
 
 

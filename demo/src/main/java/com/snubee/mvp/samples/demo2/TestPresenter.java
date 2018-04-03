@@ -32,7 +32,13 @@ public class TestPresenter extends PresenterImp<SimpleDelegate> {
 
     @Override
     public void bindEventStart() {
-
+        viewDelegate.getRootView().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("snubee","djakfjalkdjfkafdklajfklasjfkl jklj");
+                test.setName("双向绑定是否生效");
+            }
+        },3000);
     }
 
     /**

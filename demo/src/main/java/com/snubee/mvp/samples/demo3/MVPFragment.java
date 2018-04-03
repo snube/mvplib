@@ -14,7 +14,7 @@ import com.snubee.mvp.samples.demo2.TestPresenter;
  * @email snubee96@gmail.com
  * @time 2018/3/9 14:56
  **/
-public class MVPFragment extends DataBindFragment<SimpleDelegate> implements View.OnClickListener {
+public class MVPFragment extends DataBindFragment<TestPresenter,SimpleDelegate> implements View.OnClickListener {
 
 
     @Override
@@ -28,10 +28,10 @@ public class MVPFragment extends DataBindFragment<SimpleDelegate> implements Vie
         return null;
     }
 
-    @Override
-    public PresenterImp getPresenter() {
-        return new TestPresenter();
-    }
+//    @Override
+//    public PresenterImp getPresenter() {
+//        return new TestPresenter();
+//    }
 
     @Override
     public void onClick(View v) {

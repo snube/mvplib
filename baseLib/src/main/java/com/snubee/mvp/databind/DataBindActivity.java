@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.snubee.mvp.presenter.PresenterImp;
 import com.snubee.mvp.view.IDelegate;
 
+import java.lang.reflect.ParameterizedType;
+
 import butterknife.ButterKnife;
 
 
@@ -14,16 +16,18 @@ import butterknife.ButterKnife;
  * 集成数据-视图绑定的Activity基类(Presenter层)
  *
  * @param <T> View层代理类
+ * @param <P> Presenter
  * @author snubee
  */
-public abstract class DataBindActivity<T extends IDelegate> extends AppCompatActivity {
+public abstract class DataBindActivity<P extends PresenterImp<T>, T extends IDelegate> extends AppCompatActivity {
 
-    protected PresenterImp<T> mPresenter;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = getPresenter();
+//        mPresenter = getPresenter();
+        initPresenter();
 
         mPresenter.onCreate(getLayoutInflater(), savedInstanceState);
         setContentView(mPresenter.getViewDelegate().getRootView());
@@ -63,14 +67,32 @@ public abstract class DataBindActivity<T extends IDelegate> extends AppCompatAct
      * @return
      */
     public abstract DataBinder getDataBinder();
+//
+//    /**
+//     * 返回一个业务逻辑的presenter
+//     *
+//     * @return
+//     */
+//    @NonNull
+//    public abstract PresenterImp getPresenter();
 
     /**
-     * 返回一个业务逻辑的presenter
-     *
-     * @return
+     * 初始化Presenter
      */
-    @NonNull
-    public abstract PresenterImp getPresenter();
+    private void initPresenter() {
+        if (this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
+                ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments().length > 0) {
+            Class mPresenterClass = (Class) ((ParameterizedType) (this.getClass()
+                    .getGenericSuperclass())).getActualTypeArguments()[0];
+            try {
+                mPresenter = (P) mPresenterClass.newInstance();
+            } catch (java.lang.InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 }

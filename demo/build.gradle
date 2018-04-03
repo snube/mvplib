@@ -25,4 +25,5 @@ dependencies {
     compile project(':baseLib')
     compile 'com.lzy.net:okgo:3.0.4'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }

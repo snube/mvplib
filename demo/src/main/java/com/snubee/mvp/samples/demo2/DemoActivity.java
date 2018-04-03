@@ -11,7 +11,7 @@ import com.snubee.mvp.samples.R;
  * @email snubee96@gmail.com
  * @time 2018/3/9 15:05
  **/
-public class DemoActivity extends DataBindActivity<SimpleDelegate> implements View
+public class DemoActivity extends DataBindActivity<TestPresenter, SimpleDelegate> implements View
         .OnClickListener {
 
     TestBean test = new TestBean("名字");
@@ -22,6 +22,7 @@ public class DemoActivity extends DataBindActivity<SimpleDelegate> implements Vi
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        mTestPresenter = mPresenter;
 
         mTestPresenter.getViewDelegate().setOnClickListener(this, R.id.button1);
         mTestPresenter.getData();
@@ -32,10 +33,10 @@ public class DemoActivity extends DataBindActivity<SimpleDelegate> implements Vi
         return new Demo2DataBinder();
     }
 
-    @Override
-    public TestPresenter getPresenter() {
-        return mTestPresenter = new TestPresenter();
-    }
+//    @Override
+//    public TestPresenter getPresenter() {
+//        return mTestPresenter = new TestPresenter();
+//    }
 
     @Override
     public void onClick(View v) {

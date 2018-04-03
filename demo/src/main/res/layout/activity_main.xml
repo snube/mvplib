@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/linearLayout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:layout_height="match_parent">
 
 
 	<Button
 		android:id="@+id/button2"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="示例1:最简单的数据绑定"/>
+		android:text="示例1:最简单的数据绑定"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
 	<Button
 		android:id="@+id/button3"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="示例2:在fragment中的实现"/>
+		android:text="示例2:在fragment中的实现"
+		tools:layout_editor_absoluteX="88dp"
+		tools:layout_editor_absoluteY="61dp"/>
+
+	<QuickContactBadge
+		android:id="@+id/quickContactBadge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:srcCompat="@drawable/divider"
+		tools:layout_editor_absoluteX="187dp"
+		tools:layout_editor_absoluteY="253dp"/>
+
+	<TimePicker
+		android:id="@+id/timePicker"
+		android:layout_width="389dp"
+		android:layout_height="352dp"
+		tools:layout_editor_absoluteX="0dp"
+		tools:layout_editor_absoluteY="129dp"/>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
